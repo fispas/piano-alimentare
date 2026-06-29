@@ -231,15 +231,10 @@
   .pcheck[aria-checked="true"] .box svg{opacity:1}
   .pname-wrap{flex:1;display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
   .pname{font-size:14px;font-weight:550}
-  .pname-in{flex:1;min-width:120px;font-family:var(--sans);font-size:14px;font-weight:550;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2)}
-  .pname-in:focus{outline:2px solid var(--brand-soft);border-color:var(--brand);background:#fff}
   .badge-plan{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--brand-d);background:var(--brand-soft);padding:2px 7px;border-radius:999px}
   .pdel{flex:0 0 auto;border:0;background:transparent;color:var(--faint);font-size:15px;cursor:pointer;padding:4px 6px;border-radius:8px}
   .pdel:hover{background:var(--alert-soft);color:var(--alert)}
   .prow-bot{display:flex;align-items:center;gap:10px;margin-top:9px;padding-left:33px;flex-wrap:wrap}
-  .modeseg{display:flex;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:3px;flex:0 0 auto}
-  .ms{border:0;background:transparent;font-family:inherit;font-size:11.5px;font-weight:560;color:var(--muted);padding:5px 9px;border-radius:7px;cursor:pointer}
-  .ms.on{background:var(--surface);color:var(--brand-d);box-shadow:var(--sh)}
   .pfields{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .pf{font-size:9.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em;display:flex;flex-direction:column;gap:3px}
   .pf input{width:72px;font-family:var(--mono);font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;text-align:right;background:var(--surface-2)}
@@ -247,6 +242,8 @@
   .per100{font-family:var(--mono);font-size:12px;color:var(--brand-d);font-weight:600}
   .pscan{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:8px;font-size:13px;cursor:pointer;padding:6px 8px}
   .pscan:hover{background:var(--surface-2)}
+  .pscan.cart.on{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-d)}
+  .pscan:disabled{cursor:default}
   .scanned{flex-basis:100%;font-size:11px;color:var(--faint);margin-top:2px}
   /* overlay scansione */
   .scan-ov{position:fixed;inset:0;z-index:100;background:rgba(20,24,20,.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
@@ -275,18 +272,74 @@
   .prod-macros{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;font-size:11.5px;color:var(--muted)}
   .prod-macros b{font-size:15px;color:var(--ink);font-weight:680;margin-right:3px}
   .prod-macros em{font-style:normal;color:var(--faint);font-size:10.5px}
+  .prod-actions{display:flex;gap:8px;margin-top:11px}
+  .search-in{width:100%;margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;background:var(--surface);color:var(--ink);box-sizing:border-box}
+  .search-in:focus{outline:none;border-color:var(--brand)}
+  .cat-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:999px;vertical-align:middle;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+  .cat-piano{background:#e7f1ee;border-color:#bfded4;color:#2E6E5E}
+  .cat-carbo{background:#fbf0dc;border-color:#ecd5a6;color:#a9762a}
+  .cat-frutta{background:#fde9ef;border-color:#f3c4d4;color:#bb3a66}
+  .cat-verdura{background:#e8f3e1;border-color:#cae3ba;color:#4f7a37}
+  .cat-fruttasecca{background:#f1e9e1;border-color:#dcc9b6;color:#8a6a45}
+  .cat-scansionato{background:#e9eef6;border-color:#c7d4e8;color:#436091}
+  .cat-altro{background:var(--surface-2);border-color:var(--line);color:var(--muted)}
+  .prodprice-l{display:flex;align-items:center;gap:7px;margin-top:10px;font-size:12px;color:var(--muted)}
+  .prodprice-l input{width:90px;font-family:var(--mono)}
+  .add-results{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+  .add-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+  .add-name{font-size:13px;font-weight:500;display:flex;align-items:center;gap:7px}
+  .add-plus{flex:0 0 auto;width:30px;height:30px;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+  .add-plus:hover{filter:brightness(1.05)}
+  .ctrl-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .opt.mini{padding:6px 10px;font-size:11.5px}
+  .disp-macros{display:flex;flex-wrap:wrap;gap:11px;align-items:baseline;font-size:10.5px;color:var(--muted);margin:8px 0 0;padding-left:33px}
+  .disp-macros b{font-size:13px;color:var(--ink);font-weight:650;margin-right:2px}
+  .disp-macros em{font-style:normal;color:var(--faint);font-size:10px}
   /* lista spesa */
   .lrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
   .lrow:last-child{border-bottom:0}
   .lname{flex:1;min-width:0;font-family:var(--sans);font-size:14px;font-weight:500;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
   .lname:focus{outline:2px solid var(--brand-soft);border-color:var(--brand);background:#fff}
   .lname.done{text-decoration:line-through;color:var(--faint)}
+  .lname-txt{flex:1;min-width:0;font-size:14px;font-weight:500;padding:8px 2px}
+  .lname-txt.done{text-decoration:line-through;color:var(--faint)}
+  .lprice-src{font-family:var(--mono);font-size:14px;font-weight:680;color:var(--brand-d);white-space:nowrap}
+  .lista-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .hdr-eur{font-family:var(--mono);font-size:22px;font-weight:680;color:var(--brand-d);letter-spacing:-.02em}
+  .lista-sub{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .prod-price{margin-top:10px}
+  .prod-price .pf.money{flex-direction:row;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .prod-price .pf.money input{width:84px}
   .pf.money{flex-direction:row;align-items:center;gap:4px;font-size:13px;color:var(--muted)}
   .pf.money input{width:66px}
   /* card conferma scan */
   .scan-res{padding-top:4px}
   .scan-q-h{font-size:13px;font-weight:700;color:var(--brand-d);margin-bottom:9px}
   .scan-q{font-size:11.5px;color:var(--muted);line-height:1.4;margin:10px 0 13px;background:var(--surface-2);border-radius:9px;padding:9px 11px}
+  /* bottom navigation bar */
+  main.wrap{padding-bottom:104px}
+  .botbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:flex-end;justify-content:space-between;
+    background:rgba(255,255,255,.94);backdrop-filter:saturate(150%) blur(8px);-webkit-backdrop-filter:saturate(150%) blur(8px);
+    border-top:1px solid var(--line);box-shadow:0 -3px 16px rgba(0,0,0,.05);
+    padding:7px 8px calc(7px + env(safe-area-inset-bottom,0px))}
+  .navbtn{flex:1 1 0;min-width:0;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;
+    padding:6px 2px;color:var(--faint);font-size:10px;font-weight:600;-webkit-tap-highlight-color:transparent}
+  .navbtn svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .navbtn span{line-height:1}
+  .navbtn[aria-selected="true"]{color:var(--brand-d)}
+  .navbtn:active{transform:scale(.94)}
+  .nb-ic{position:relative;display:inline-flex}
+  .nav-badge{position:absolute;top:-5px;right:-10px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;
+    background:var(--pro);color:#fff;font-size:10px;font-weight:700;line-height:16px;text-align:center;box-sizing:border-box;
+    box-shadow:0 0 0 2px rgba(255,255,255,.94)}
+  .navfab{flex:0 0 auto;width:58px;height:58px;margin:0 6px;transform:translateY(-18px);
+    border:0;border-radius:50%;background:var(--brand);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 7px 18px rgba(46,110,94,.42);-webkit-tap-highlight-color:transparent}
+  .navfab svg{width:28px;height:28px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .navfab:active{transform:translateY(-18px) scale(.93)}
+  .save-warn{position:fixed;left:0;right:0;top:0;z-index:200;background:#D7263D;color:#fff;
+    font-size:12.5px;line-height:1.35;padding:calc(8px + env(safe-area-inset-top,0px)) 14px 8px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+  .save-warn b{font-weight:700}
 </style>
 </head>
 <body>
@@ -300,12 +353,6 @@
       </div>
     </div>
     <div class="status" id="status"></div>
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" data-view="oggi" aria-selected="true">Oggi</button>
-      <button class="tab" role="tab" data-view="preset" aria-selected="false">Preset</button>
-      <button class="tab" role="tab" data-view="spesa" aria-selected="false">Spesa</button>
-      <button class="tab" role="tab" data-view="regole" aria-selected="false">Regole</button>
-    </div>
   </div>
 </header>
 
@@ -319,6 +366,24 @@
     Per modifiche, fuori-routine o dopo le 3 settimane, rivolgiti allo Studio.
   </div>
 </main>
+
+<nav class="botbar" role="tablist" aria-label="Navigazione principale">
+  <button class="navbtn" data-view="oggi" aria-selected="true">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></svg><span>Oggi</span>
+  </button>
+  <button class="navbtn" data-view="spesa" aria-selected="false">
+    <span class="nb-ic"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 11.2A1.8 1.8 0 0 1 15.2 21H8.8A1.8 1.8 0 0 1 7 19.2L6 8z"/><path d="M9 8V6.2a3 3 0 0 1 6 0V8"/></svg><span class="nav-badge" id="navListBadge" hidden></span></span><span>Alimenti</span>
+  </button>
+  <button class="navfab" id="fabScan" data-scanopen aria-label="Scansiona codice a barre">
+    <svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7.5 8v8M10.5 8v8M13.5 8v8M16.5 8v8"/></svg>
+  </button>
+  <button class="navbtn" data-view="preset" aria-selected="false">
+    <svg viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.2-8.5 4.2-8.5-4.2L12 3.5z"/><path d="M3.8 12l8.2 4 8.2-4M3.8 16.2l8.2 4 8.2-4"/></svg><span>Preset</span>
+  </button>
+  <button class="navbtn" data-view="regole" aria-selected="false">
+    <svg viewBox="0 0 24 24"><rect x="4.5" y="3" width="15" height="18" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></svg><span>Regole</span>
+  </button>
+</nav>
 
 <script>
 "use strict";
@@ -499,7 +564,7 @@ function seedPresets(){
 
 const DEFAULT = {
   presets:[], activeId:null, editingId:null, today:{sel:{}},
-  pantry:[], spesaFilter:"all", spesaTab:"prodotti", scanned:[], shopping:[],
+  pantry:[], spesaFilter:"all", spesaTab:"dispensa", scanned:[], shopping:[], prodSort:"az", prodFilter:"all", dispSort:"az", dispFilter:"all",
   water:0, freeMeals:0, redMeat:0, restDay:false, nutr:{},
   startDate:null, done:{}, lastDate:todayStr(), weekStart:mondayOf(todayStr()),
 };
@@ -507,13 +572,30 @@ function presetById(id, st){ st=st||S; return (st.presets||[]).find(p=>p.id===id
 let S = load();
 function load(){
   let r=null; try{ r=JSON.parse(localStorage.getItem(KEY)); }catch(e){}
-  const s = r ? {...DEFAULT, ...r} : clone(DEFAULT);
+  const s = (r && typeof r==="object" && !Array.isArray(r)) ? {...DEFAULT, ...r} : clone(DEFAULT);
   if(!s.presets || !s.presets.length) s.presets = seedPresets();
   if(!presetById(s.activeId, s)) s.activeId = s.presets[0].id;
   if(!presetById(s.editingId, s)) s.editingId = s.presets[0].id;
   if(!s.today) s.today = {sel:{}};
   if(!s.today.sel || !Object.keys(s.today.sel).length) s.today.sel = clone(presetById(s.activeId, s).sel);
   if(!s.pantry || !s.pantry.length) s.pantry = seedPantry();
+  if(!(s.pantry||[]).some(p=>p.cat==="frutta")) s.pantry = s.pantry.concat(seedProduce());
+  if(!(s.pantry||[]).some(p=>p.cat==="carbo")) s.pantry = s.pantry.concat(seedCarbs());
+  if(!(s.pantry||[]).some(p=>p.cat==="fruttasecca")) s.pantry = s.pantry.concat(seedNuts());
+  // fold prodotti scansionati (vecchio S.scanned) dentro la libreria unica
+  if(Array.isArray(s.scanned) && s.scanned.length){
+    s.scanned.forEach(sc=>{
+      let it=(s.pantry||[]).find(p=>p.ean && p.ean===sc.ean);
+      if(!it){ it={id:genId(), nome:sc.name||"Prodotto", foodId:null, cat:"scansionato", ho:false, prezzo:+sc.prezzo||0, gConf:sc.qty||0, note:"", disp:false, ean:sc.ean}; s.pantry.push(it); }
+      it.brand=sc.brand||it.brand||""; it.nutri=sc.nutri||it.nutri||null; it.nova=sc.nova||it.nova||null;
+      it.m100={kcal:sc.kcal,p:sc.p,c:sc.c,f:sc.f}; if(sc.qty&&!it.gConf) it.gConf=sc.qty;
+    });
+    s.scanned=[];
+  }
+  s.pantry.forEach(p=>{
+    if(!p.cat) p.cat = p.foodId?"piano":"altro";
+    if(p.disp===undefined) p.disp = (p.cat==="piano"||p.cat==="altro");
+  });
   if(!Array.isArray(s.scanned)) s.scanned=[];
   if(!Array.isArray(s.shopping)) s.shopping=[];
   // materializza TUTTI i macro nel JSON (riempie i mancanti, preserva le modifiche)
@@ -524,7 +606,40 @@ function load(){
   });
   return s;
 }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+let saveOk=true;
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); saveOk=true; const w=document.getElementById("saveWarn"); if(w) w.remove(); }catch(e){ saveOk=false; showSaveWarning(); } }
+function showSaveWarning(){
+  if(typeof document==="undefined" || document.getElementById("saveWarn")) return;
+  const b=document.createElement("div"); b.id="saveWarn"; b.className="save-warn";
+  b.innerHTML='⚠️ Salvataggio non riuscito (spazio del browser pieno o bloccato). Esporta un backup dalla scheda <b>Regole</b>.';
+  document.body.appendChild(b);
+}
+function exportData(){
+  try{
+    const payload=JSON.stringify({app:"il-mio-piano", v:2, exportedAt:new Date().toISOString(), data:S});
+    const blob=new Blob([payload],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a"); a.href=url; a.download="il-mio-piano-backup-"+todayStr()+".json";
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1500);
+  }catch(e){ alert("Esportazione non riuscita."); }
+}
+function importData(file){
+  const r=new FileReader();
+  r.onload=()=>{
+    let data=null;
+    try{ const p=JSON.parse(r.result); data = (p && p.data && typeof p.data==="object") ? p.data : p; }
+    catch(e){ alert("File non leggibile (JSON non valido)."); return; }
+    if(!data || typeof data!=="object" || !Array.isArray(data.presets) || !Array.isArray(data.pantry)){
+      alert("Questo file non sembra un backup de \u201CIl mio piano\u201D."); return;
+    }
+    if(!confirm("Importare questo backup? Sostituir\u00E0 tutti i dati attuali (pasti, prezzi, dispensa, preset).")) return;
+    try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){ alert("Impossibile salvare i dati importati."); return; }
+    S = load(); render();
+    alert("Backup importato correttamente.");
+  };
+  r.onerror=()=>alert("Lettura del file non riuscita.");
+  r.readAsText(file);
+}
 function rollover(){
   const t=todayStr();
   if(S.lastDate!==t){ S.water=0; S.done={}; S.lastDate=t; }
@@ -541,13 +656,46 @@ function ctxOf(card){ return card.dataset.ctx==="preset" ? {kind:"preset", id:ca
 /* ---- Dispensa / Spesa ---- */
 function seedPantry(){
   // una voce per ogni alimento del piano, collegata via foodId
-  return NUTR_IDS.map(id=>({ id:genId(), nome:NUTR_LBL[id]||id, foodId:id, ho:true, costMode:"per100", prezzo:0, gConf:0, note:"" }));
+  return NUTR_IDS.map(id=>({ id:genId(), nome:NUTR_LBL[id]||id, foodId:id, cat:"piano", ho:true, prezzo:0, gConf:0, note:"" }));
+}
+function seedNuts(){
+  const N=[["Mandorle",579,21,22,49],["Noci",654,15,14,65],["Nocciole",628,15,17,61],["Anacardi",553,18,30,44],
+    ["Pistacchi",562,20,28,45],["Arachidi",567,26,16,49],["Burro d'arachidi",588,25,20,50],["Pinoli",673,14,13,68],
+    ["Semi di zucca",559,30,11,49],["Semi di girasole",584,21,20,51],["Semi di chia",486,17,42,31],["Semi di lino",534,18,29,42],
+    ["Datteri",282,2.5,75,0.4],["Uvetta",299,3,79,0.5],["Fichi secchi",249,3.3,64,0.9],["Cocco essiccato",660,7,24,64]];
+  return N.map(a=>({id:genId(), nome:a[0], foodId:null, cat:"fruttasecca", ho:false, prezzo:0, gConf:0, note:"", disp:false, m100:{kcal:a[1],p:a[2],c:a[3],f:a[4]}}));
+}
+function seedCarbs(){
+  // valori per 100g: pasta/riso/cereali a crudo (secco), patate/pane come da etichetta
+  const C=[
+    ["Pasta di semola",371,13,75,1.5],["Pasta integrale",348,13,66,2.5],
+    ["Riso bianco",360,7,79,0.6],["Riso integrale",362,7.5,76,2.7],["Riso basmati",350,8,78,0.9],
+    ["Patate",77,2,17,0.1],["Patate dolci",86,1.6,20,0.1],
+    ["Pane bianco",265,9,49,3.2],["Pane integrale",247,9,41,3.4],
+    ["Gallette di riso",387,8,82,3],["Fiocchi d'avena",389,17,66,7],
+    ["Couscous",376,13,77,0.6],["Couscous integrale",350,14,68,2],
+    ["Orzo perlato",352,10,77,1.2],["Farro",340,15,67,2.5],["Quinoa",368,14,64,6],
+    ["Polenta (farina di mais)",362,8,79,3.6]
+  ];
+  return C.map(a=>({id:genId(), nome:a[0], foodId:null, cat:"carbo", ho:false, prezzo:0, gConf:0, note:"", m100:{kcal:a[1],p:a[2],c:a[3],f:a[4]}}));
+}
+function seedProduce(){
+  const F=[["Mela",52,0.3,14,0.2],["Banana",89,1.1,23,0.3],["Arancia",47,0.9,12,0.1],["Fragole",32,0.7,8,0.3],
+    ["Kiwi",61,1.1,15,0.5],["Pera",57,0.4,15,0.1],["Uva",67,0.6,17,0.4],["Ananas",50,0.5,13,0.1],
+    ["Pesca",39,0.9,10,0.3],["Mirtilli",57,0.7,14,0.3],["Anguria",30,0.6,8,0.2],["Melone",34,0.8,8,0.2],
+    ["Mandarino",53,0.8,13,0.3],["Albicocche",48,1.4,11,0.4],["Lamponi",52,1.2,12,0.7]];
+  const V=[["Spinaci",23,2.9,3.6,0.4],["Pomodoro",18,0.9,3.9,0.2],["Zucchine",17,1.2,3.1,0.3],["Carote",41,0.9,10,0.2],
+    ["Peperoni",31,1,6,0.3],["Melanzane",25,1,6,0.2],["Lattuga",15,1.4,2.9,0.2],["Cetriolo",15,0.7,3.6,0.1],
+    ["Fagiolini",31,1.8,7,0.2],["Cavolfiore",25,1.9,5,0.3],["Funghi",22,3.1,3.3,0.3],["Cipolla",40,1.1,9,0.1],
+    ["Sedano",16,0.7,3,0.2],["Patata",77,2,17,0.1],["Rucola",25,2.6,3.7,0.7]];
+  const mk=(arr,cat)=>arr.map(a=>({id:genId(), nome:a[0], foodId:null, cat, ho:false, prezzo:0, gConf:0, note:"", m100:{kcal:a[1],p:a[2],c:a[3],f:a[4]}}));
+  return [...mk(F,"frutta"), ...mk(V,"verdura")];
 }
 function seedNutr(){ const o={}; NUTR_IDS.forEach(id=>{ const b=NUTR_BASE[id]; o[id]={kcal:b.kcal,p:b.p,c:b.c,f:b.f}; }); return o; }
 function nutrEdited(id){ const b=NUTR_BASE[id]||{}, o=(S.nutr&&S.nutr[id])||{}; return ["kcal","p","c","f"].some(k=> o[k]!=null && +o[k]!==+b[k]); }
 function nutrScannedName(id){ const it=(S.pantry||[]).find(x=>x.foodId===id && x.ean); return it ? (it.scannedName||"prodotto scansionato") : null; }
 function pantryByFood(foodId){ return (S.pantry||[]).find(x=>x.foodId===foodId); }
-function pricePer100(it){ if(!it||it.costMode!=="per100") return null; const p=+it.prezzo, g=+it.gConf; if(!p||!g) return null; return p/g*100; }
+function pricePer100(it){ if(!it) return null; const p=+it.prezzo, g=+it.gConf; if(!p||!g) return null; return p/g*100; }
 function costOf(mid, grams){ const c=pricePer100(pantryByFood(mid)); return c==null?null:c*grams/100; }
 function listCost(macroList){ let tot=0, partial=false, any=false;
   (macroList||[]).forEach(x=>{ const c=costOf(x.mid,x.mg); if(c==null) partial=true; else { tot+=c; any=true; } });
@@ -561,7 +709,6 @@ function missingToday(){
 }
 
 /* ============ MOTORE REGOLE (pasti standard) ============ */
-function tagsOf(m){ const p=(PRO[m]||[]).find(x=>x.id===selOf(m).pro); return p?(p.tags||[]):[]; }
 
 function computeMeal(m){
   const s=selOf(m), cfg=CARBO[m], gl=GRASSI[m];
@@ -673,6 +820,7 @@ function renderStatus(){
   if(dm.any) items.push({dot:"var(--ink)", html:`≈<b class="num">${Math.round(dm.t.kcal)}</b> kcal oggi`});
   if(dm.cost.any) items.push({dot:"var(--brand)", html:`≈<b class="num">€${dm.cost.tot.toFixed(2)}</b> oggi`});
   items.forEach(i=> box.appendChild(el(`<div class="pill"><span class="dot" style="background:${i.dot}"></span>${i.html}</div>`)));
+  navBadge();
 }
 function daysIn(){ return Math.floor((new Date(todayStr())-new Date(S.startDate))/864e5)+1; }
 
@@ -729,11 +877,6 @@ function presetPickerCard(){
     <div class="mb-foot">Tocca una giornata per caricarla. Le voci qui sotto sono modificabili al volo solo per oggi. Crea/modifica le giornate nella scheda <b>Preset</b>.</div></div>`);
 }
 
-function spesaHdrText(){
-  const toBuy=S.pantry.filter(x=>!x.ho);
-  const tot=toBuy.reduce((a,x)=>a+(+x.prezzo||0),0);
-  return `${toBuy.length}<span> da comprare · ≈€${tot.toFixed(2)}</span>`;
-}
 const fmt = v => (v==null||isNaN(+v))?"–":(+v).toFixed(1).replace(/\.0$/,"");
 const NUTRI = {A:["Ottimo","#1E8F4E"],B:["Buono","#69A532"],C:["Medio","#E0B100"],D:["Scarso","#E07B00"],E:["Pessimo","#D7263D"]};
 const NOVA = {1:["Non lavorato","#1E8F4E"],2:["Ingrediente","#69A532"],3:["Lavorato","#E07B00"],4:["Ultra-processato","#D7263D"]};
@@ -750,87 +893,164 @@ function qualityNote(d){
 }
 function planName(itemId){ const it=(S.pantry||[]).find(x=>x.id===itemId); return it?it.nome:"alimento"; }
 
-function renderSpesa(){
-  const v=$("#view-spesa"); v.innerHTML="";
-  const tab=S.spesaTab||"prodotti";
-  const nBuy=(S.shopping||[]).filter(x=>!x.done).length;
-  v.appendChild(el(`<div class="card"><div class="tabs">
-    <button class="tab" data-stab="lista" aria-selected="${tab==='lista'}">Lista${nBuy?` · ${nBuy}`:''}</button>
-    <button class="tab" data-stab="prodotti" aria-selected="${tab==='prodotti'}">Prodotti</button>
-    <button class="tab" data-stab="dispensa" aria-selected="${tab==='dispensa'}">Dispensa</button>
-  </div></div>`));
-  if(tab==="lista") renderLista(v);
-  else if(tab==="dispensa") renderDispensa(v);
-  else renderProdotti(v);
+const NUTRI_RANK={A:1,B:2,C:3,D:4,E:5};
+function rowMacros(it){
+  const m = it.foodId ? nutrOf(it.foodId) : it.m100;
+  if(!m) return "";
+  return `<div class="disp-macros"><span><b class="num">${m.kcal!=null?Math.round(m.kcal):'–'}</b> kcal</span><span><b class="num">${fmt(m.p)}</b> P</span><span><b class="num">${fmt(m.c)}</b> C</span><span><b class="num">${fmt(m.f)}</b> G</span><em>/100g</em></div>`;
+}
+function addToDispensa(it){ if(it){ it.disp=true; } }
+function inShopping(it){ return (S.shopping||[]).some(l=>(l.pantryId&&l.pantryId===it.id)||(l.ean&&it.ean&&l.ean===it.ean)); }
+function addToShopping(it){
+  if(!Array.isArray(S.shopping)) S.shopping=[];
+  if(inShopping(it)) return;
+  S.shopping.push({id:genId(), name:it.nome, prezzo:+it.prezzo||0, done:false, ean:it.ean||null, pantryId:it.id});
+}
+/* prezzo effettivo di una voce in lista: dal vivo dal prodotto in libreria, altrimenti manuale */
+function linePrice(line){
+  if(line.pantryId){ const p=(S.pantry||[]).find(x=>x.id===line.pantryId); if(p && +p.prezzo>0) return +p.prezzo; }
+  if(line.ean){ const d=(S.pantry||[]).find(x=>x.ean===line.ean && +x.prezzo>0); if(d) return +d.prezzo; }
+  return +line.prezzo||0;
+}
+/* scrive il prezzo su UN solo prodotto logico: stesso EAN o stesso id ovunque */
+function setPrice(ref, value){
+  value=+value||0; let ean=ref.ean;
+  if(ref.pantryId){ const p=(S.pantry||[]).find(x=>x.id===ref.pantryId); if(p){ p.prezzo=value; if(p.ean) ean=p.ean; } }
+  if(ean){ (S.pantry||[]).forEach(p=>{ if(p.ean===ean) p.prezzo=value; }); }
+}
+function macroVals(it){ return it.foodId ? nutrOf(it.foodId) : (it.m100||{kcal:null,p:null,c:null,f:null}); }
+function catOf(it){ return it.cat || (it.foodId?"piano":"altro"); }
+function dispCmp(a,b,s){
+  const ma=macroVals(a), mb=macroVals(b);
+  if(s==="kcal") return (ma.kcal??1e9)-(mb.kcal??1e9);
+  if(s==="p") return (mb.p??-1)-(ma.p??-1);
+  if(s==="c") return (mb.c??-1)-(ma.c??-1);
+  if(s==="f") return (mb.f??-1)-(ma.f??-1);
+  return (a.nome||"").localeCompare(b.nome||"");
 }
 
-function renderProdotti(v){
-  v.appendChild(el(`<div class="card"><button class="b fill" data-scanopen style="width:100%;padding:13px;font-size:14px">📷 Scansiona / cerca prodotto</button>
-    <div class="mb-foot">Inquadra o digita l’EAN: salvo nome, macro per 100g e indice Nutri-Score / NOVA da Open Food Facts. Poi puoi aggiungerlo alla lista.</div></div>`));
-  const list=S.scanned||[];
-  if(!list.length){ v.appendChild(el(`<div class="card"><div class="scheda empty">Nessun prodotto salvato. Scansiona qualcosa al supermercato e finirà qui.</div></div>`)); return; }
-  const rows=list.map(it=>{
-    const inList=(S.shopping||[]).some(l=>l.ean&&l.ean===it.ean);
+function renderSpesa(){
+  const v=$("#view-spesa"); v.innerHTML="";
+  const tab=S.spesaTab||"dispensa";
+  const nBuy=(S.shopping||[]).filter(x=>!x.done).length;
+  v.appendChild(el(`<div class="card"><div class="tabs">
+    <button class="tab" data-stab="dispensa" aria-selected="${tab==='dispensa'}">Dispensa</button>
+    <button class="tab" data-stab="prodotti" aria-selected="${tab==='prodotti'}">Tutti i prodotti</button>
+    <button class="tab" data-stab="lista" aria-selected="${tab==='lista'}">Lista${nBuy?` · ${nBuy}`:''}</button>
+  </div></div>`));
+  if(tab==="prodotti") renderProdotti(v);
+  else if(tab==="lista") renderLista(v);
+  else renderDispensa(v);
+  navBadge();
+}
+
+function catLabel(c){ return {piano:"Piano",carbo:"Carbo",frutta:"Frutta",verdura:"Verdura",fruttasecca:"Frutta secca",scansionato:"Scansionato",altro:"Altro"}[c]||c; }
+function macroLine(m){ return `<div class="prod-macros"><span><b class="num">${m.kcal!=null?Math.round(m.kcal):'–'}</b> kcal</span><span><b class="num">${fmt(m.p)}</b> P</span><span><b class="num">${fmt(m.c)}</b> C</span><span><b class="num">${fmt(m.f)}</b> G</span><em>/100g</em></div>`; }
+function libFilterSort(arr, filt, sort, q){
+  q=(q||"").trim().toLowerCase();
+  return arr.filter(it=> (filt==="all"||catOf(it)===filt) && (!q || (it.nome||"").toLowerCase().includes(q))).sort((a,b)=>dispCmp(a,b,sort));
+}
+const catChips = (data, attr, cur)=>["all","piano","carbo","frutta","verdura","fruttasecca","scansionato"]
+  .map(k=>`<button class="opt mini" data-${attr}="${k}" aria-pressed="${cur===k}">${k==='all'?'Tutti':catLabel(k)}</button>`).join("");
+const sortChips = (attr, cur)=>[["az","A-Z"],["kcal","Kcal ↑"],["p","Proteine ↓"],["c","Carbo ↓"],["f","Grassi ↓"]]
+  .map(s=>`<button class="opt mini" data-${attr}="${s[0]}" aria-pressed="${cur===s[0]}">${s[1]}</button>`).join("");
+
+function prodRows(){
+  const items=libFilterSort(S.pantry, S.prodFilter||"all", S.prodSort||"az", prodQuery);
+  if(!items.length) return '<div class="scheda empty">Nessun prodotto.</div>';
+  return items.map(it=>{
+    const m=macroVals(it);
+    const badges=(it.nutri||it.nova)?`<div class="prod-badges">${nutriBadge(it.nutri)}${novaBadge(it.nova)}</div>`:'';
     return `<div class="prodrow">
-      <div class="prod-h"><div class="prod-name">${escapeHtml(it.name||"Prodotto")}${it.brand?`<small>${escapeHtml(it.brand)}</small>`:''}</div>
-        <button class="pdel" data-scandel="${it.id}" title="Elimina">✕</button></div>
-      <div class="prod-badges">${nutriBadge(it.nutri)}${novaBadge(it.nova)}</div>
-      <div class="prod-macros"><span><b class="num">${it.kcal!=null?Math.round(it.kcal):'–'}</b> kcal</span><span><b class="num">${fmt(it.p)}</b> P</span><span><b class="num">${fmt(it.c)}</b> C</span><span><b class="num">${fmt(it.f)}</b> G</span><em>/100g${it.qty?` · conf. ${it.qty}g`:''}</em></div>
-      <button class="b ${inList?'':'fill'}" data-tolist="${it.id}" style="width:100%;margin-top:10px;font-size:12.5px"${inList?' disabled':''}>${inList?'✓ In lista':'＋ Aggiungi alla lista'}</button>
-    </div>`;
+      <div class="prod-h"><div class="prod-name">${escapeHtml(it.nome)}${it.brand?`<small>${escapeHtml(it.brand)}</small>`:''} <span class="cat-tag cat-${catOf(it)}">${catLabel(catOf(it))}</span></div>
+        ${it.foodId?'':`<button class="pdel" data-prodremove="${it.id}" title="Elimina dalla libreria">✕</button>`}</div>
+      ${badges}${macroLine(m)}
+      <label class="pf money prodprice-l">Prezzo €<input type="number" min="0" step="0.01" value="${it.prezzo||''}" data-pprice="${it.id}" placeholder="0.00"></label>
+      <div class="prod-actions">
+        <button class="b ${it.disp?'':'fill'} flex" data-todisp="${it.id}"${it.disp?' disabled':''}>${it.disp?'✓ In dispensa':'＋ Dispensa'}</button>
+        <button class="b ${inShopping(it)?'':'fill'} flex" data-tolist="${it.id}"${inShopping(it)?' disabled':''}>${inShopping(it)?'✓ Lista':'🛒 Lista'}</button>
+      </div></div>`;
   }).join("");
-  v.appendChild(el(`<div class="card"><div class="prodlist">${rows}</div></div>`));
+}
+function renderProdotti(v){
+  const filt=S.prodFilter||"all", sort=S.prodSort||"az";
+  v.appendChild(el(`<div class="card">
+    <button class="b fill" data-scanopen style="width:100%;padding:13px;font-size:14px">📷 Scansiona / cerca prodotto</button>
+    <input class="search-in" type="text" placeholder="Cerca tra i prodotti…" value="${escapeHtml(prodQuery)}" data-prodsearch>
+    <div class="mb-foot">Catalogo completo: alimenti del piano, frutta, verdura, carbo, frutta secca e prodotti scansionati. Con ＋ li metti in dispensa o in lista.</div></div>`));
+  v.appendChild(el(`<div class="card">
+    <div class="ctrl-lbl">Categoria</div><div class="opts">${catChips(null,"prodfilter",filt)}</div>
+    <div class="ctrl-lbl" style="margin-top:12px">Ordina</div><div class="opts">${sortChips("prodsort",sort)}</div></div>`));
+  v.appendChild(el(`<div class="card"><div class="prodlist" id="prodList">${prodRows()}</div></div>`));
 }
 
 function renderLista(v){
   const list=S.shopping||[];
-  const tot=list.filter(x=>!x.done).reduce((a,x)=>a+(+x.prezzo||0),0);
+  const totAll=list.reduce((a,x)=>a+linePrice(x),0);
+  const nBuy=list.filter(x=>!x.done).length;
   CTX={kind:"today"}; const miss=missingToday();
-  v.appendChild(el(`<div class="card"><h2>Lista della spesa</h2>
-    <div class="day-kcal num" style="font-size:24px" id="listaHdr">${list.filter(x=>!x.done).length}<span> da comprare · ≈€${tot.toFixed(2)}</span></div>
-    ${miss.length?`<div class="note" style="margin-top:11px">Dal piano di oggi ti manca: <b>${miss.join(", ")}</b> — gestiscili in <b>Dispensa</b>.</div>`:''}</div>`));
-  const rows=list.map(it=>`<div class="lrow">
-    <div class="pcheck" role="checkbox" aria-checked="${it.done}" data-ldone="${it.id}"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-    <input class="lname ${it.done?'done':''}" type="text" value="${escapeHtml(it.name||'')}" data-lname="${it.id}" placeholder="Voce">
-    <label class="pf money">€<input type="number" min="0" step="0.01" value="${it.prezzo||''}" data-lprice="${it.id}" placeholder="0.00"></label>
-    <button class="pdel" data-ldel="${it.id}" title="Rimuovi">✕</button>
-  </div>`).join("");
-  v.appendChild(el(`<div class="card"><div class="plist">${rows||'<div class="scheda empty">Lista vuota. Aggiungi voci dai Prodotti o manualmente.</div>'}</div>
-    <button class="b" data-ladd style="margin-top:12px;width:100%">＋ Aggiungi voce</button></div>`));
+  v.appendChild(el(`<div class="card">
+    <div class="lista-head"><h2 style="margin:0">Lista della spesa</h2><span class="hdr-eur num" id="listaTot">≈€${totAll.toFixed(2)}</span></div>
+    <div class="lista-sub">${nBuy} da comprare${list.length>nBuy?` · ${list.length} totali`:''}</div>
+    ${miss.length?`<div class="note" style="margin-top:11px">Dal piano di oggi ti manca: <b>${miss.join(", ")}</b> — aggiungili dalla <b>Dispensa</b> col 🛒.</div>`:''}</div>`));
+  const rows=list.map(it=>{
+    const linked = it.pantryId || it.ean;
+    const val = linked ? linePrice(it) : (+it.prezzo||0);
+    const nameCell = linked
+      ? `<span class="lname-txt ${it.done?'done':''}">${escapeHtml(it.name||'')}</span>`
+      : `<input class="lname ${it.done?'done':''}" type="text" value="${escapeHtml(it.name||'')}" data-lname="${it.id}" placeholder="Voce">`;
+    return `<div class="lrow">
+      <div class="pcheck" role="checkbox" aria-checked="${it.done}" data-ldone="${it.id}"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      ${nameCell}
+      <label class="pf money">€<input type="number" min="0" step="0.01" value="${val||''}" data-lprice="${it.id}" placeholder="0.00"></label>
+      <button class="pdel" data-ldel="${it.id}" title="Rimuovi">✕</button>
+    </div>`;
+  }).join("");
+  v.appendChild(el(`<div class="card"><div class="plist">${rows||'<div class="scheda empty">Lista vuota. Aggiungi voci dai Prodotti, dalla Dispensa (🛒) o manualmente.</div>'}</div>
+    <button class="b" data-ladd style="margin-top:12px;width:100%">＋ Aggiungi voce manuale</button>
+    ${list.some(x=>x.done)?`<button class="b" data-lclear style="margin-top:8px;width:100%;font-size:12px">Rimuovi comprati</button>`:''}</div>`));
 }
 
-function renderDispensa(v){
-  const rows=S.pantry.map(it=>{
-    const linked = it.foodId ? `<span class="badge-plan">piano</span>` : "";
-    const nameHtml = it.foodId ? `<span class="pname">${escapeHtml(it.nome)}</span>`
-      : `<input class="pname-in" type="text" value="${escapeHtml(it.nome)}" data-pname="${it.id}" placeholder="Nome voce">`;
-    const seg = `<div class="modeseg">
-        <button class="ms ${it.costMode==='per100'?'on':''}" data-pmode="${it.id}" data-mode="per100">€/100g</button>
-        <button class="ms ${it.costMode==='flat'?'on':''}" data-pmode="${it.id}" data-mode="flat">Totale</button></div>`;
-    let fields;
-    if(it.costMode==='flat'){
-      fields=`<div class="pfields"><label class="pf">€ totale<input type="number" min="0" step="0.01" value="${it.prezzo||''}" data-pprice="${it.id}" placeholder="0.00"></label>
-        <span class="per100" id="per100-${it.id}">solo lista spesa</span></div>`;
-    } else {
-      const c=pricePer100(it);
-      fields=`<div class="pfields">
-        <label class="pf">€ conf.<input type="number" min="0" step="0.01" value="${it.prezzo||''}" data-pprice="${it.id}" placeholder="0.00"></label>
-        <label class="pf">g conf.<input type="number" min="0" step="1" value="${it.gConf||''}" data-pgrams="${it.id}" placeholder="0"></label>
-        <span class="per100" id="per100-${it.id}">${c!=null?`≈€${c.toFixed(2)}/100g`:''}</span></div>`;
-    }
+function dispRows(){
+  const items=libFilterSort(S.pantry.filter(p=>p.disp), S.dispFilter||"all", S.dispSort||"az", "");
+  if(!items.length) return '<div class="scheda empty">Dispensa vuota per questo filtro. Aggiungi prodotti col campo Cerca qui sopra o dalla scheda Prodotti.</div>';
+  return items.map(it=>{
+    const c=pricePer100(it);
+    const tag = it.foodId ? `<span class="badge-plan">piano</span>` : `<span class="cat-tag cat-${catOf(it)}">${catLabel(catOf(it))}</span>`;
+    const inList=inShopping(it);
     return `<div class="prow">
       <div class="prow-top">
         <div class="pcheck" role="checkbox" aria-checked="${it.ho}" data-pho="${it.id}"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-        <div class="pname-wrap">${nameHtml}${linked}${it.scannedName?`<span class="scanned">📦 ${escapeHtml(it.scannedName)}</span>`:''}</div>
+        <div class="pname-wrap"><span class="pname">${escapeHtml(it.nome)}</span>${tag}${it.brand?`<span class="scanned">🏷️ ${escapeHtml(it.brand)}</span>`:''}</div>
+        <button class="pscan cart ${inList?'on':''}" data-pcart="${it.id}" title="Aggiungi alla lista della spesa"${inList?' disabled':''}>${inList?'✓':'🛒'}</button>
         <button class="pscan" data-pscan="${it.id}" title="Scansiona per riempire i macro">🔍</button>
-        ${it.foodId?'':`<button class="pdel" data-pdel="${it.id}" title="Elimina">✕</button>`}
+        <button class="pdel" data-dispremove="${it.id}" title="Rimuovi dalla dispensa">✕</button>
       </div>
-      <div class="prow-bot">${seg}${fields}</div>
+      ${rowMacros(it)}
+      <div class="prow-bot"><div class="pfields">
+        <label class="pf">Prezzo €<input type="number" min="0" step="0.01" value="${it.prezzo||''}" data-pprice="${it.id}" placeholder="0.00"></label>
+        <label class="pf">Peso g<input type="number" min="0" step="1" value="${it.gConf||''}" data-pgrams="${it.id}" placeholder="0"></label>
+        <span class="per100" id="per100-${it.id}">${c!=null?`≈€${c.toFixed(2)}/100g`:'prezzo + peso →'}</span></div></div>
     </div>`;
   }).join("");
-  v.appendChild(el(`<div class="card"><h2>Dispensa · alimenti del piano</h2>
-    <div class="mb-foot" style="margin:0 0 12px">Spunta cosa hai. Il prezzo <b>€/100g</b> alimenta €/pasto e €/giorno. 🔍 riempie i macro da barcode.</div>
-    <div class="plist">${rows}</div></div>`));
+}
+function dispAddRows(){
+  const q=(dispQuery||"").trim().toLowerCase();
+  if(q.length<1) return '';
+  const items=S.pantry.filter(p=>!p.disp && (p.nome||"").toLowerCase().includes(q)).slice(0,14);
+  if(!items.length) return '<div class="scheda empty" style="margin-top:8px">Nessun prodotto da aggiungere (forse è già in dispensa).</div>';
+  return `<div class="add-results">`+items.map(it=>`<div class="add-row"><span class="add-name">${escapeHtml(it.nome)} <span class="cat-tag cat-${catOf(it)}">${catLabel(catOf(it))}</span></span><button class="add-plus" data-dispadd="${it.id}" title="Aggiungi alla dispensa">＋</button></div>`).join("")+`</div>`;
+}
+function renderDispensa(v){
+  const filt=S.dispFilter||"all", sort=S.dispSort||"az";
+  v.appendChild(el(`<div class="card"><h2>Dispensa</h2>
+    <div class="mb-foot" style="margin:0 0 10px">Solo ciò che hai. <b>Prezzo</b> + <b>Peso</b> → €/100g (alimenta €/pasto). 🛒 in lista · 🔍 macro da barcode · ✕ toglie dalla dispensa (resta nei Prodotti).</div>
+    <input class="search-in" type="text" placeholder="Cerca un prodotto da aggiungere…" value="${escapeHtml(dispQuery)}" data-dispsearch>
+    <div id="dispAdd">${dispAddRows()}</div></div>`));
+  v.appendChild(el(`<div class="card">
+    <div class="ctrl-lbl">Categoria</div><div class="opts">${catChips(null,"dispfilter",filt)}</div>
+    <div class="ctrl-lbl" style="margin-top:12px">Ordina</div><div class="opts">${sortChips("dispsort",sort)}</div></div>`));
+  v.appendChild(el(`<div class="card"><div class="plist" id="dispList">${dispRows()}</div></div>`));
 }
 
 function chip(text,gram,pressed,attrs,extraClass=""){
@@ -943,7 +1163,7 @@ function renderOggi(){
   CTX={kind:"today"};
   const miss=missingToday();
   if(miss.length){
-    v.appendChild(el(`<div class="banner warn"><span>🛒</span><div>Ti manca in dispensa per oggi: <b>${miss.join(", ")}</b>. Segna cosa hai nella scheda <b>Spesa</b>.</div></div>`));
+    v.appendChild(el(`<div class="banner warn"><span>🛒</span><div>Ti manca in dispensa per oggi: <b>${miss.join(", ")}</b>. Segna cosa hai nella scheda <b>Alimenti</b>.</div></div>`));
   }
 
   // Macro della giornata
@@ -1065,14 +1285,24 @@ function renderRegole(){
     <div class="leg"><span class="swatch" style="background:var(--carb)"></span><span>Carboidrati</span></div>
     <div class="leg"><span class="swatch" style="background:var(--fat)"></span><span>Grassi</span></div>
   </div></div>`));
+
+  v.appendChild(el(`<div class="card"><h2>Backup dei dati</h2>
+    <div class="mb-foot" style="margin:0 0 12px">I dati vivono solo in questo browser. Esporta un backup per non perderli se pulisci i dati, cambi dispositivo o browser. L'import sostituisce tutto.</div>
+    <div class="wbtns">
+      <button class="b fill flex" data-export>⬇️ Esporta backup</button>
+      <button class="b flex" data-import>⬆️ Importa backup</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+  </div>`));
 }
 
 /* ============ INTERAZIONI ============ */
 const openMeals=new Set();
 let nutOpen=false;
+let prodQuery="", dispQuery="";
 
 document.addEventListener("click", e=>{
-  const t=e.target.closest("[data-toggle],[data-view],[data-pro],[data-carbo],[data-grassi],[data-pw],[data-water],[data-free],[data-red],[data-done],[data-loadtoday],[data-editpreset],[data-addpreset],[data-delpreset],[data-stab],[data-pho],[data-pmode],[data-pdel],[data-pscan],[data-scanopen],[data-tolist],[data-scandel],[data-ldone],[data-ldel],[data-ladd],[data-scanclose],[data-scanlookup],[data-scanapply],[data-scanadd],[data-scanagain],#setStart,#resetStart,#newDay,#restToggle,#nutToggle,#nutReset");
+  const t=e.target.closest("[data-toggle],[data-view],[data-pro],[data-carbo],[data-grassi],[data-pw],[data-water],[data-free],[data-red],[data-done],[data-loadtoday],[data-editpreset],[data-addpreset],[data-delpreset],[data-stab],[data-pho],[data-pcart],[data-pscan],[data-scanopen],[data-tolist],[data-todisp],[data-prodremove],[data-dispremove],[data-dispadd],[data-prodfilter],[data-prodsort],[data-dispfilter],[data-dispsort],[data-ldone],[data-ldel],[data-ladd],[data-lclear],[data-scanclose],[data-scanlookup],[data-scanapply],[data-scanadd],[data-scanagain],[data-export],[data-import],#setStart,#resetStart,#newDay,#restToggle,#nutToggle,#nutReset");
   if(!t) return;
 
   if(t.dataset.view){ switchView(t.dataset.view); return; }
@@ -1102,23 +1332,36 @@ document.addEventListener("click", e=>{
   // spesa: tab + dispensa
   if(t.dataset.stab){ S.spesaTab=t.dataset.stab; save(); renderSpesa(); return; }
   if(t.dataset.pho){ const it=S.pantry.find(x=>x.id===t.dataset.pho); if(it){ it.ho=!it.ho; save(); renderSpesa(); renderStatus(); } return; }
-  if(t.dataset.pmode){ const it=S.pantry.find(x=>x.id===t.dataset.pmode); if(it){ it.costMode=t.dataset.mode; save(); renderSpesa(); renderStatus(); } return; }
+  if(t.dataset.pcart){ const it=S.pantry.find(x=>x.id===t.dataset.pcart); if(it){ addToShopping(it); save(); renderSpesa(); } return; }
   if(t.dataset.pdel){ S.pantry=S.pantry.filter(x=>x.id!==t.dataset.pdel); save(); renderSpesa(); renderStatus(); return; }
   if(t.dataset.pscan){ openScan("plan", t.dataset.pscan); return; }
 
-  // prodotti scansionati
+  // catalogo / dispensa (libreria unica S.pantry)
   if(t.dataset.scanopen!==undefined){ openScan("catalog"); return; }
-  if(t.dataset.tolist){ const it=(S.scanned||[]).find(x=>x.id===t.dataset.tolist); if(it){ addToShopping(it); save(); renderSpesa(); } return; }
-  if(t.dataset.scandel){ S.scanned=(S.scanned||[]).filter(x=>x.id!==t.dataset.scandel); save(); renderSpesa(); return; }
+  if(t.dataset.tolist){ const it=S.pantry.find(x=>x.id===t.dataset.tolist); if(it){ addToShopping(it); save(); renderSpesa(); } return; }
+  if(t.dataset.todisp){ const it=S.pantry.find(x=>x.id===t.dataset.todisp); if(it){ addToDispensa(it); save(); renderSpesa(); renderStatus(); } return; }
+  if(t.dataset.dispadd){ const it=S.pantry.find(x=>x.id===t.dataset.dispadd); if(it){ it.disp=true; dispQuery=""; save(); renderSpesa(); renderStatus(); } return; }
+  if(t.dataset.dispremove){ const it=S.pantry.find(x=>x.id===t.dataset.dispremove); if(it){ it.disp=false; save(); renderSpesa(); renderStatus(); } return; }
+  if(t.dataset.prodremove){ const id=t.dataset.prodremove; const it=S.pantry.find(x=>x.id===id);
+    S.pantry=S.pantry.filter(x=>x.id!==id);
+    S.shopping=(S.shopping||[]).filter(l=> l.pantryId!==id && (!it||!it.ean||l.ean!==it.ean));
+    save(); renderSpesa(); renderStatus(); return; }
+  if(t.dataset.prodfilter){ S.prodFilter=t.dataset.prodfilter; save(); renderSpesa(); return; }
+  if(t.dataset.prodsort){ S.prodSort=t.dataset.prodsort; save(); renderSpesa(); return; }
+  if(t.dataset.dispfilter){ S.dispFilter=t.dataset.dispfilter; save(); renderSpesa(); return; }
+  if(t.dataset.dispsort){ S.dispSort=t.dataset.dispsort; save(); renderSpesa(); return; }
 
   // lista spesa
-  if(t.dataset.ldone){ const it=(S.shopping||[]).find(x=>x.id===t.dataset.ldone); if(it){ it.done=!it.done; save(); renderSpesa(); } return; }
+  if(t.dataset.ldone){ const it=(S.shopping||[]).find(x=>x.id===t.dataset.ldone); if(it){ it.done=!it.done;
+    if(it.done){ const pit=(S.pantry||[]).find(p=>(it.pantryId&&p.id===it.pantryId)||(it.ean&&p.ean&&p.ean===it.ean)); if(pit) pit.ho=true; }
+    save(); renderSpesa(); renderStatus(); } return; }
   if(t.dataset.ldel){ S.shopping=(S.shopping||[]).filter(x=>x.id!==t.dataset.ldel); save(); renderSpesa(); return; }
+  if(t.dataset.lclear!==undefined){ S.shopping=(S.shopping||[]).filter(x=>!x.done); save(); renderSpesa(); return; }
   if(t.dataset.ladd!==undefined){ if(!Array.isArray(S.shopping)) S.shopping=[]; S.shopping.push({id:genId(), name:"", prezzo:0, done:false}); save(); renderSpesa(); return; }
 
   // scansione: card di conferma
   if(t.dataset.scanapply!==undefined){ const ov=document.getElementById("scanOv"); if(ov&&scanResult){ applyScan(ov.dataset.ref, scanResult.data, scanResult.ean); } closeScan(); S.spesaTab="dispensa"; renderSpesa(); return; }
-  if(t.dataset.scanadd){ if(scanResult){ addScanned(scanResult.data, scanResult.ean, t.dataset.scanadd==="list"); } closeScan(); S.spesaTab=(t.dataset.scanadd==="list")?"lista":"prodotti"; renderSpesa(); return; }
+  if(t.dataset.scanadd){ if(scanResult){ addScanned(scanResult.data, scanResult.ean, t.dataset.scanadd==="disp"); } closeScan(); S.spesaTab=(t.dataset.scanadd==="disp")?"dispensa":"prodotti"; renderSpesa(); return; }
   if(t.dataset.scanagain!==undefined){ const ov=document.getElementById("scanOv"); const m=ov?ov.dataset.mode:"catalog", r=ov?ov.dataset.ref:null; closeScan(); openScan(m, r); return; }
   if(t.dataset.scanclose!==undefined){ closeScan(); return; }
   if(t.dataset.scanlookup!==undefined){ const inp=document.getElementById("scanEan"); if(inp) lookup(inp.value); return; }
@@ -1135,6 +1378,8 @@ document.addEventListener("click", e=>{
   if(t.id==="newDay"){ S.water=0; S.done={}; save(); render(); return; }
   if(t.id==="nutToggle"){ nutOpen=!nutOpen; renderOggi(); return; }
   if(t.id==="nutReset"){ S.nutr=seedNutr(); save(); renderStatus(); renderOggi(); return; }
+  if(t.dataset.export!==undefined){ exportData(); return; }
+  if(t.dataset.import!==undefined){ const f=document.getElementById("importFile"); if(f) f.click(); return; }
 });
 
 document.addEventListener("input", e=>{
@@ -1154,20 +1399,23 @@ document.addEventListener("input", e=>{
   }
   if(t.dataset && (t.dataset.pprice||t.dataset.pgrams)){
     const id=t.dataset.pprice||t.dataset.pgrams; const it=S.pantry.find(x=>x.id===id); if(!it) return;
-    if(t.dataset.pprice) it.prezzo=+t.value||0; else it.gConf=+t.value||0;
+    if(t.dataset.pprice) setPrice({pantryId:it.id, ean:it.ean}, t.value); else it.gConf=+t.value||0;
     save();
-    const span=document.getElementById("per100-"+id); if(span && it.costMode==="per100"){ const c=pricePer100(it); span.textContent=c!=null?`≈€${c.toFixed(2)}/100g`:""; }
-    const hdr=document.getElementById("spesaHdr"); if(hdr) hdr.innerHTML=spesaHdrText();
+    const span=document.getElementById("per100-"+id); if(span){ const c=pricePer100(it); span.textContent=c!=null?`≈€${c.toFixed(2)}/100g`:"prezzo + peso →"; }
     renderStatus();
     const mc=document.getElementById("macroCard"); if(mc) mc.innerHTML=macroCardInner();
     return;
   }
   if(t.dataset && t.dataset.pname){ const it=S.pantry.find(x=>x.id===t.dataset.pname); if(it){ it.nome=t.value; save(); } return; }
   if(t.dataset && t.dataset.lname){ const it=(S.shopping||[]).find(x=>x.id===t.dataset.lname); if(it){ it.name=t.value; save(); } return; }
-  if(t.dataset && t.dataset.lprice){ const it=(S.shopping||[]).find(x=>x.id===t.dataset.lprice); if(it){ it.prezzo=+t.value||0; save();
-    const list=S.shopping.filter(x=>!x.done); const tot=list.reduce((a,x)=>a+(+x.prezzo||0),0);
-    const h=document.getElementById("listaHdr"); if(h) h.innerHTML=`${list.length}<span> da comprare · ≈€${tot.toFixed(2)}</span>`; }
+  if(t.dataset && t.dataset.lprice){ const it=(S.shopping||[]).find(x=>x.id===t.dataset.lprice); if(it){
+    if(it.pantryId||it.ean) setPrice({pantryId:it.pantryId, ean:it.ean}, t.value); else it.prezzo=+t.value||0;
+    save();
+    const totAll=(S.shopping||[]).reduce((a,x)=>a+linePrice(x),0);
+    const h=document.getElementById("listaTot"); if(h) h.textContent=`≈€${totAll.toFixed(2)}`; }
     return; }
+  if(t.dataset && t.dataset.prodsearch!==undefined){ prodQuery=t.value; const l=document.getElementById("prodList"); if(l) l.innerHTML=prodRows(); return; }
+  if(t.dataset && t.dataset.dispsearch!==undefined){ dispQuery=t.value; const a=document.getElementById("dispAdd"); if(a) a.innerHTML=dispAddRows(); return; }
   if(t.dataset && t.dataset.nut){
     const id=t.dataset.nut, k=t.dataset.k;
     if(!S.nutr) S.nutr={};
@@ -1177,6 +1425,12 @@ document.addEventListener("input", e=>{
     save();
     renderStatus();
     const mc=document.getElementById("macroCard"); if(mc) mc.innerHTML=macroCardInner();
+  }
+});
+
+document.addEventListener("change", e=>{
+  if(e.target && e.target.id==="importFile" && e.target.files && e.target.files[0]){
+    importData(e.target.files[0]); e.target.value="";
   }
 });
 
@@ -1200,8 +1454,8 @@ function parseOFF(json){
 }
 function applyScan(itemId, d, ean){
   const it=S.pantry.find(x=>x.id===itemId); if(!it) return;
-  it.ean=ean; if(d.name) it.scannedName=d.name;
-  if(it.costMode==="per100" && d.qty) it.gConf=d.qty;
+  it.ean=ean; if(d.name) it.scannedName=d.name; if(d.brand) it.brand=d.brand;
+  if(d.qty) it.gConf=d.qty;
   if(it.foodId){
     if(!S.nutr) S.nutr={};
     const o={...(S.nutr[it.foodId]||{})};
@@ -1285,7 +1539,7 @@ function showResult(d, ean){
   const macros=`<div class="prod-macros"><span><b class="num">${d.kcal!=null?Math.round(d.kcal):'–'}</b> kcal</span><span><b class="num">${fmt(d.p)}</b> P</span><span><b class="num">${fmt(d.c)}</b> C</span><span><b class="num">${fmt(d.f)}</b> G</span><em>/100g${d.qty?` · conf. ${d.qty}g`:''}</em></div>`;
   const actions = mode==="plan"
     ? `<button class="b fill" data-scanapply style="width:100%">Applica a ${escapeHtml(planName(ref))}</button>`
-    : `<div class="wbtns"><button class="b fill flex" data-scanadd="list">Aggiungi + in lista</button><button class="b flex" data-scanadd="save">Solo salva</button></div>`;
+    : `<div class="wbtns"><button class="b fill flex" data-scanadd="disp">Salva + in dispensa</button><button class="b flex" data-scanadd="save">Solo salva</button></div>`;
   const res=document.getElementById("scanResult");
   res.innerHTML=`<div class="scan-res">
     <div class="scan-q-h">Vuoi aggiungere?</div>
@@ -1297,26 +1551,29 @@ function showResult(d, ean){
     <button class="b" data-scanagain style="width:100%;margin-top:8px;font-size:12px">↺ Scansiona un altro</button>
   </div>`;
 }
-function addScanned(d, ean, toList){
-  if(!Array.isArray(S.scanned)) S.scanned=[];
-  let it=S.scanned.find(x=>x.ean===ean);
-  if(!it){ it={id:genId(), ean}; S.scanned.unshift(it); }
-  Object.assign(it,{name:d.name||it.name||"Prodotto", brand:d.brand||"", kcal:d.kcal, p:d.p, c:d.c, f:d.f, qty:d.qty, nutri:d.nutri, nova:d.nova});
-  if(toList) addToShopping(it);
+/* salva un prodotto scansionato nella libreria unica (S.pantry, cat scansionato) */
+function addScanned(d, ean, toDisp){
+  if(!Array.isArray(S.pantry)) S.pantry=[];
+  let it=S.pantry.find(p=>p.ean&&p.ean===ean);
+  if(!it){ it={id:genId(), nome:d.name||"Prodotto", foodId:null, cat:"scansionato", ho:false, prezzo:0, gConf:d.qty||0, note:"", disp:false, ean}; S.pantry.push(it); }
+  it.nome=d.name||it.nome||"Prodotto"; it.brand=d.brand||it.brand||""; it.nutri=d.nutri||null; it.nova=d.nova||null;
+  it.m100={kcal:d.kcal,p:d.p,c:d.c,f:d.f}; if(d.qty) it.gConf=d.qty;
+  if(toDisp) it.disp=true;
   save();
 }
-function addToShopping(catItem){
-  if(!Array.isArray(S.shopping)) S.shopping=[];
-  if(S.shopping.some(l=>l.ean&&l.ean===catItem.ean)) return;
-  S.shopping.push({id:genId(), name:catItem.name||"Prodotto", prezzo:0, done:false, ean:catItem.ean});
-}
 
+function navBadge(){
+  const b=document.getElementById("navListBadge"); if(!b) return;
+  const n=(S.shopping||[]).filter(x=>!x.done).length;
+  if(n>0){ b.textContent=n>99?"99+":String(n); b.hidden=false; } else b.hidden=true;
+}
 function switchView(v){
-  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===v));
+  document.querySelectorAll(".navbtn").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===v));
   document.querySelectorAll(".view").forEach(s=>s.classList.toggle("on", s.id==="view-"+v));
   if(v==="oggi") renderOggi();
   if(v==="preset") renderPreset();
   if(v==="spesa") renderSpesa();
+  navBadge();
   window.scrollTo({top:0});
 }
 
